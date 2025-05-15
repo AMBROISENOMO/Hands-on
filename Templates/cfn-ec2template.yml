@@ -1,0 +1,19 @@
+Mappings:
+  EC2MAPPING:
+    us-east-1:
+      MyAMI1: ami-085386e29e44dacd7
+    us-west-1:
+      MyA1: ami-04fc83311a8d478df
+    us-east-2:
+      MAMI1: ami-058a8a5ab36292159
+Resources:
+   myInstance:
+     Type: 'AWS::EC2::Instance'
+     Properties:
+        ImageId: !FindInMap [ EC2MAPPING, "us-west-1", MyA1 ]
+        InstanceType: t2.micro
+        Tags: 
+        - Key: "department"
+          Value: "finance"
+        - Key: "department"
+          Value: "law"
